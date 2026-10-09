@@ -87,6 +87,25 @@
         ],
       ];
 
+      const CalculatorContext = React.createContext();
+
+      function CalculatorProvider({ children }) {
+        const [history, setHistory] = React.useState([]);
+
+        function updateHistory(operation, parsedResult) {
+          setHistory((prevValue) => [
+            ...prevValue,
+            `${operation} = ${parsedResult}`,
+          ]);
+        }
+
+        return (
+          <CalculatorContext.Provider value={{ history, updateHistory }}>
+            {children}
+          </CalculatorContext.Provider>
+        );
+      }
+
       function Text({
         children,
         className,
@@ -167,6 +186,8 @@
         const [operation, setOperation] = React.useState("");
         const [result, setResult] = React.useState("");
 
+        const { updateHistory } = React.useContext(CalculatorContext);
+
         function handleButtonClick(input) {
           if (input === "C") {
             setOperation("");
@@ -185,7 +206,10 @@
             const parsedResult = operationResult
               .toString()
               ?.replace(/\./g, ",");
+
             setResult(parsedResult);
+            updateHistory(operation, parsedResult);
+
             return;
           }
 
@@ -228,16 +252,26 @@
       }
 
       function OperationHistory() {
+        const { history } = React.useContext(CalculatorContext);
+
         return (
           <Card className="py-10 px-8 w-full max-w-[22.25rem]">
             <Text as="h1" variant="heading" className="mb-4">
               Histórico de Operações
             </Text>
-            <ul className="flex flex-col gap-3">
-              <Text as="li">1 + 1 = 2</Text>
-              <Text as="li">2 + 3 + 1 = 6</Text>
-              <Text as="li">2 + 3 = 5</Text>
-            </ul>
+            {history.length > 0 ? (
+              <ul className="flex flex-col gap-3">
+                {history.map((operation, index) => (
+                  <Text key={`operation-${index}`} as="li">
+                    {operation}
+                  </Text>
+                ))}
+              </ul>
+            ) : (
+              <Text as="p" variant="muted">
+                Nenhuma operação recente
+              </Text>
+            )}
           </Card>
         );
       }
@@ -245,8 +279,10 @@
       function App() {
         return (
           <main className="py-28 px-4 sm:px-10 flex flex-col sm:flex-row items-center sm:items-stretch  justify-center gap-5">
-            <Calculator />
-            <OperationHistory />
+            <CalculatorProvider>
+              <Calculator />
+              <OperationHistory />
+            </CalculatorProvider>
           </main>
         );
       }
