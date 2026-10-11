@@ -91,19 +91,87 @@
 
       function CalculatorProvider({ children }) {
         const [history, setHistory] = React.useState([]);
+        const historyStorageKey = "calculator:history";
 
         function updateHistory(operation, parsedResult) {
-          setHistory((prevValue) => [
-            ...prevValue,
-            `${operation} = ${parsedResult}`,
-          ]);
+          setHistory((prevValue) => {
+            const updatedHistory = [
+              ...prevValue,
+              `${operation} = ${parsedResult}`,
+            ];
+
+            localStorage.setItem(
+              historyStorageKey,
+              JSON.stringify(updatedHistory),
+            );
+
+            return updatedHistory;
+          });
         }
+
+        React.useEffect(() => {
+          const savedHistory = localStorage.getItem(historyStorageKey);
+
+          setHistory(JSON.parse(savedHistory || "[]"));
+        }, []);
 
         return (
           <CalculatorContext.Provider value={{ history, updateHistory }}>
             {children}
           </CalculatorContext.Provider>
         );
+      }
+
+      function useCalculator() {
+        const [operation, setOperation] = React.useState("");
+        const [result, setResult] = React.useState("");
+
+        const { updateHistory } = React.useContext(CalculatorContext);
+
+        function doOperation(input) {
+          if (input === "C") {
+            setOperation("");
+            setResult("");
+            return;
+          }
+
+          if (input === "CE") {
+            setResult("");
+            setOperation(operation.slice(0, -1));
+            return;
+          }
+
+          if (input === "=") {
+            const operationResult = eval(operation.replace(/,/g, "."));
+            const parsedResult = operationResult
+              .toString()
+              ?.replace(/\./g, ",");
+
+            setResult(parsedResult);
+            updateHistory(operation, parsedResult);
+
+            return;
+          }
+
+          if (result) {
+            setOperation(isNaN(input) ? `${result}${input}` : input);
+            setResult("");
+            return;
+          }
+
+          if (input === "," && !operation.endsWith(",")) {
+            setOperation(`${operation},`);
+            return;
+          }
+
+          setOperation(`${operation}${input}`);
+        }
+
+        return {
+          operation,
+          result,
+          doOperation,
+        };
       }
 
       function Text({
@@ -183,48 +251,10 @@
       }
 
       function Calculator() {
-        const [operation, setOperation] = React.useState("");
-        const [result, setResult] = React.useState("");
-
-        const { updateHistory } = React.useContext(CalculatorContext);
+        const { operation, result, doOperation } = useCalculator();
 
         function handleButtonClick(input) {
-          if (input === "C") {
-            setOperation("");
-            setResult("");
-            return;
-          }
-
-          if (input === "CE") {
-            setResult("");
-            setOperation(operation.slice(0, -1));
-            return;
-          }
-
-          if (input === "=") {
-            const operationResult = eval(operation.replace(/,/g, "."));
-            const parsedResult = operationResult
-              .toString()
-              ?.replace(/\./g, ",");
-
-            setResult(parsedResult);
-            updateHistory(operation, parsedResult);
-
-            return;
-          }
-
-          if (result) {
-            setOperation(isNaN(input) ? `${result}${input}` : input);
-            setResult("");
-            return;
-          }
-
-          if (input === "," && !operation.endsWith(",")) {
-            setOperation(`${operation},`);
-            return;
-          }
-
-          setOperation(`${operation}${input}`);
+          doOperation(input);
         }
 
         return (
