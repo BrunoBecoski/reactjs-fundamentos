@@ -55,22 +55,46 @@
         return (
           <button
             className="flex items-center justify-center rounded-xl
-              p-3 cursor-pointer text-(--text)
-              bg-linear-(--gradient)
-              hover:bg-linear-(--gradient-hover)
-              shadow-(--shadow) bg-(--primary)"
+          p-3 cursor-pointer text-(--text)
+          bg-linear-(--gradient)
+          hover:bg-linear-(--gradient-hover)
+          shadow-(--shadow) bg-(--primary)"
           >
             Botão
           </button>
         );
       }
 
+      function Header() {
+        return (
+          <header className="flex items-center justify-between bg-(--background) py-4 px-8 rounded-b-2xl">
+            <a
+              href="/"
+              className="flex items-center justify-center rounded-full text-xl size-8 cursor-pointer bg-(--primary) text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow)"
+              title="Voltar"
+            >
+              {"<"}
+            </a>
+
+            <h1 className="text-2xl">Componentes</h1>
+
+            <div />
+          </header>
+        );
+      }
+
       function App() {
         return (
-          <main className="flex gap-2 p-3">
-            <Button />
-            <Button />
-          </main>
+          <>
+            <Header />
+
+            <main className="flex items-center justify-center">
+              <div className="flex items-center justify-center gap-2 mt-20">
+                <Button />
+                <Button />
+              </div>
+            </main>
+          </>
         );
       }
       ReactDOM.createRoot(document.getElementById("root")).render(<App />);

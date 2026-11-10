@@ -52,7 +52,22 @@
 
     <script type="text/babel">
       ReactDOM.createRoot(document.getElementById("root")).render(
-        <h1>Hello World!</h1>,
+        <>
+          <header className="flex items-center justify-between bg-(--background) py-4 px-8 rounded-b-2xl">
+            <a
+              href="/"
+              className="flex items-center justify-center rounded-full text-xl size-8 cursor-pointer bg-(--primary) text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow)"
+              title="Voltar"
+            >
+              {"<"}
+            </a>
+
+            <h1 className="text-2xl">Hello World</h1>
+
+            <div />
+          </header>
+          <h1 className="text-center text-9xl pt-32">Hello World!</h1>{" "}
+        </>,
       );
     </script>
   </body>
