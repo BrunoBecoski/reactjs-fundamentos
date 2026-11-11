@@ -51,23 +51,9 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <script type="text/babel">
-      function Button() {
-        return (
-          <button
-            className="flex items-center justify-center rounded-xl
-          p-3 cursor-pointer text-(--text)
-          bg-linear-(--gradient)
-          hover:bg-linear-(--gradient-hover)
-          shadow-(--shadow) bg-(--primary)"
-          >
-            Botão
-          </button>
-        );
-      }
-
       function Header() {
         return (
-          <header className="flex items-center justify-between bg-(--background) py-4 px-8 rounded-b-2xl">
+          <header className="flex items-center justify-between bg-(--background) py-4 px-8 rounded-b-2xl mb-20">
             <a
               href="/"
               className="flex items-center justify-center rounded-full text-xl size-8 cursor-pointer bg-(--primary) text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow)"
@@ -83,13 +69,27 @@
         );
       }
 
+      function Button() {
+        return (
+          <button
+            className="flex items-center justify-center rounded-xl
+          p-3 cursor-pointer text-(--text)
+          bg-linear-(--gradient)
+          hover:bg-linear-(--gradient-hover)
+          shadow-(--shadow) bg-(--primary)"
+          >
+            Botão
+          </button>
+        );
+      }
+
       function App() {
         return (
           <>
             <Header />
 
             <main className="flex items-center justify-center">
-              <div className="flex items-center justify-center gap-2 mt-20">
+              <div className="flex items-center justify-center gap-2">
                 <Button />
                 <Button />
               </div>

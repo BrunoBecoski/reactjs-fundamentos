@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Memoização - React.js - Fundamentos</title>
+
+    <style type="text/tailwindcss">
+      @theme {
+        --font-sans: "Rubik", sans-serif;
+
+        --text: #ebebeb;
+        --text-secondary: #6b6b6b;
+        --primary: #462878;
+        --background: #2d2a37;
+
+        --bg-gradient:
+          180deg, rgba(128, 126, 206, 1) 0%, rgba(142, 126, 206, 1) 100%;
+
+        --gradient:
+          180deg, rgba(0, 0, 0, 0.05) 0%, rgba(255, 255, 255, 0.05) 100%;
+
+        --gradient-hover:
+          180deg, rgba(0, 0, 0, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%;
+
+        --shadow:
+          0px 11px 7px 0px rgba(0, 0, 0, 0.01),
+          0px 7px 7px 0px rgba(0, 0, 0, 0.04),
+          0px 4px 6px 0px rgba(0, 0, 0, 0.1),
+          0px 2px 4px 0px rgba(0, 0, 0, 0.26),
+          0px 0px 2px 0px rgba(0, 0, 0, 0.29),
+          0px 2px 3px 0px rgba(255, 255, 255, 0.06) inset;
+      }
+    </style>
+  </head>
+
+  <body class="min-h-screen text-(--text) bg-linear-(--bg-gradient)">
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+      function Header() {
+        return (
+          <header className="flex items-center justify-between bg-(--background) py-4 px-8 rounded-b-2xl mb-20">
+            <a
+              href="/"
+              className="flex items-center justify-center rounded-full text-xl size-8 cursor-pointer bg-(--primary) text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow)"
+              title="Voltar"
+            >
+              {"<"}
+            </a>
+
+            <h1 className="text-2xl">Memoização</h1>
+
+            <div />
+          </header>
+        );
+      }
+
+      const users = [
+        { id: 1, name: "Ana" },
+        { id: 2, name: "Beatriz" },
+        { id: 3, name: "Gustavo" },
+        { id: 4, name: "Guilherme" },
+        { id: 5, name: "Carlos" },
+        { id: 6, name: "Bruno" },
+      ];
+
+      function App() {
+        const [search, setSearch] = React.useState("");
+        const [count, setCount] = React.useState(0);
+
+        console.log("re-render!");
+
+        const filteredUsers = React.useMemo(() => {
+          console.log("Filtrando dados!");
+
+          return users.filter((user) =>
+            user.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()),
+          );
+        }, [search]);
+
+        return (
+          <>
+            <Header />
+            <main className="p-2 flex flex-col items-center">
+              <div>
+                <input
+                  value={search}
+                  onChange={(event) => setSearch(event.target.value)}
+                  placeholder="Buscar usuários..."
+                />
+
+                <button
+                  className="rounded-xl p-3 cursor-pointer text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow) bg-(--primary)"
+                  onClick={() => setCount(count + 1)}
+                >
+                  re-render: {count}
+                </button>
+              </div>
+
+              <ul>
+                {filteredUsers.map((user) => (
+                  <li key={user.id}>{user.name}</li>
+                ))}
+              </ul>
+            </main>
+            ;
+          </>
+        );
+      }
+
+      ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+    </script>
+  </body>
+</html>

@@ -50,6 +50,24 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <script type="text/babel">
+      function Header() {
+        return (
+          <header className="flex items-center justify-between bg-(--background) py-4 px-8 rounded-b-2xl mb-20">
+            <a
+              href="/"
+              className="flex items-center justify-center rounded-full text-xl size-8 cursor-pointer bg-(--primary) text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow)"
+              title="Voltar"
+            >
+              {"<"}
+            </a>
+
+            <h1 className="text-2xl">Calculadora</h1>
+
+            <div />
+          </header>
+        );
+      }
+
       const textVariants = {
         default: "text-xl",
         muted: "text-xl text-(--text-secondary)",
@@ -304,24 +322,6 @@
               </Text>
             )}
           </Card>
-        );
-      }
-
-      function Header() {
-        return (
-          <header className="flex items-center justify-between bg-(--background) py-4 px-8 rounded-b-2xl">
-            <a
-              href="/"
-              className="flex items-center justify-center rounded-full text-xl size-8 cursor-pointer bg-(--primary) text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow)"
-              title="Voltar"
-            >
-              {"<"}
-            </a>
-
-            <h1 className="text-2xl">Calculadora</h1>
-
-            <div />
-          </header>
         );
       }
 

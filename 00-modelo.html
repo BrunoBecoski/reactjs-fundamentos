@@ -44,8 +44,30 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <script type="text/babel">
+      function Header() {
+        return (
+          <header className="flex items-center justify-between bg-(--background) py-4 px-8 rounded-b-2xl">
+            <a
+              href="/"
+              className="flex items-center justify-center rounded-full text-xl size-8 cursor-pointer bg-(--primary) text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow)"
+              title="Voltar"
+            >
+              {"<"}
+            </a>
+
+            <h1 className="text-2xl">Modelo</h1>
+
+            <div />
+          </header>
+        );
+      }
+
       function App() {
-        return <main className="p-3">...</main>;
+        return;
+        <>
+          <Header />
+          <main className="p-3 mt-20">...</main>;
+        </>;
       }
 
       ReactDOM.createRoot(document.getElementById("root")).render(<App />);
