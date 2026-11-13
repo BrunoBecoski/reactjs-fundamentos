@@ -1,0 +1,17 @@
+{
+  "users": [
+    {
+      "id": "mLvi1onBdNs",
+      "name": "Bruno"
+    },
+    {
+      "id": "1NYX-KHmszI",
+      "name": "Gustavo"
+    },
+    {
+      "id": "GX8cCyCMCG0",
+      "name": "Helena"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
