@@ -1,6 +1,6 @@
 import React from "react";
 
-import fetcher from "../helpers/api";
+import { api, fetcher } from "../helpers/api";
 import type { UserType } from "../models/user";
 
 function useUser() {
@@ -24,10 +24,26 @@ function useUser() {
     }
   }, []);
 
+  const createUser = async (payload: UserType) => {
+    try {
+      setRequestStatus("saving");
+
+      await api("/users", { method: "POST", body: JSON.stringify(payload) });
+
+      alert(`Usuário ${payload.name} criado com sucesso!`);
+    } catch (error) {
+      console.log(error);
+      alert(`Erro ao criar o usuário: ${payload.name}`);
+    } finally {
+      setRequestStatus("idle");
+    }
+  };
+
   return {
     user,
     userRequestStatus: requestStatus,
     getUser,
+    createUser,
   };
 }
 

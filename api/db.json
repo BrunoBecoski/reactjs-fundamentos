@@ -11,6 +11,14 @@
     {
       "id": "hel",
       "name": "Helena"
+    },
+    {
+      "id": "ant",
+      "name": "Antônio"
+    },
+    {
+      "id": "lar",
+      "name": "Lara"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
