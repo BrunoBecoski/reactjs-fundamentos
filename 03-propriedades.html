@@ -64,12 +64,7 @@
       function Button({ children, className, variant = "default", ...props }) {
         return (
           <button
-            className={`
-              flex items-center justify-center rounded-xl
-              p-3 cursor-pointer text-(--text)
-              bg-linear-(--gradient)
-              hover:bg-linear-(--gradient-hover)
-              shadow-(--shadow)"
+            className={`flex items-center justify-center rounded-xl p-3 cursor-pointer text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow)
               ${buttonVariants[variant]}
               ${className}
             `}
@@ -85,8 +80,8 @@
           <header className="flex items-center justify-between bg-(--background) py-4 px-8 rounded-b-2xl mb-20">
             <a
               href="/"
-              className="flex items-center justify-center rounded-full text-xl size-8 cursor-pointer bg-(--primary) text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow)"
               title="Voltar"
+              className="flex items-center justify-center rounded-full text-xl size-8 cursor-pointer bg-(--primary) text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow)"
             >
               {"<"}
             </a>
@@ -102,7 +97,7 @@
         return (
           <>
             <Header />
-            <main className="flex items-center justify-center gap-2 p-3">
+            <main className="flex items-center justify-center gap-2 bg-(--background) shadow-(--shadow) rounded-2xl p-14 w-fit mx-auto mb-20">
               <Button title="Meu Botão" className="mr-14">
                 Meu Botão
               </Button>

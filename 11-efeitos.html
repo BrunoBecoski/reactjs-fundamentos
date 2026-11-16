@@ -61,8 +61,8 @@
           <header className="flex items-center justify-between bg-(--background) py-4 px-8 rounded-b-2xl mb-20">
             <a
               href="/"
-              className="flex items-center justify-center rounded-full text-xl size-8 cursor-pointer bg-(--primary) text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow)"
               title="Voltar"
+              className="flex items-center justify-center rounded-full text-xl size-8 cursor-pointer bg-(--primary) text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow)"
             >
               {"<"}
             </a>
@@ -98,44 +98,32 @@
 
         return (
           <>
-            <div>
-              <label>Nome:</label>
-              <input onChange={(event) => setName(event.target.value)} />
-            </div>
+            <input
+              onChange={(event) => setName(event.target.value)}
+              className="rounded-xl p-3 outline-none text-(--text) bg-linear-(--gradient) focus:bg-linear-(--gradient-hover) shadow-(--shadow) bg-(--background)"
+            />
 
-            <p>
+            <p className="text-xl">
               Contador: <b>{counter}</b>
             </p>
             <button
               type="button"
               onClick={() => setCounter(10)}
-              className="flex items-center justify-center rounded-xl
-              p-3 cursor-pointer text-(--text)
-              bg-linear-(--gradient)
-              hover:bg-linear-(--gradient-hover)
-              shadow-(--shadow) bg-(--primary)"
+              className="flex items-center justify-center rounded-xl p-3 cursor-pointer text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow) bg-(--primary)"
             >
               Atualizar
             </button>
             <button
               type="button"
               onClick={() => setCounter((prevValue) => prevValue + 1)}
-              className="flex items-center justify-center rounded-xl
-              p-3 cursor-pointer text-(--text)
-              bg-linear-(--gradient)
-              hover:bg-linear-(--gradient-hover)
-              shadow-(--shadow) bg-(--primary)"
+              className="flex items-center justify-center rounded-xl p-3 cursor-pointer text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow) bg-(--primary)"
             >
               Incrementar
             </button>
             <button
               type="button"
               onClick={() => setCounter((prevValue) => prevValue - 1)}
-              className="flex items-center justify-center rounded-xl
-              p-3 cursor-pointer text-(--text)
-              bg-linear-(--gradient)
-              hover:bg-linear-(--gradient-hover)
-              shadow-(--shadow) bg-(--primary)"
+              className="flex items-center justify-center rounded-xl p-3 cursor-pointer text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow) bg-(--primary)"
             >
               Decrementar
             </button>
@@ -149,18 +137,13 @@
         return (
           <>
             <Header />
-            <main className="flex flex-col items-center">
+            <main className="flex flex-col items-center gap-8 bg-(--background) shadow-(--shadow) rounded-2xl p-14 w-fit mx-auto mb-20">
               <button
                 onClick={() => setShow(!show)}
-                className="flex items-center justify-center rounded-xl
-              p-3 cursor-pointer text-(--text)
-              bg-linear-(--gradient)
-              hover:bg-linear-(--gradient-hover)
-              shadow-(--shadow) bg-(--primary)"
+                className="flex items-center justify-center rounded-xl p-3 cursor-pointer text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow) bg-(--primary)"
               >
                 Mostrar/Ocultar Contador
               </button>
-              <hr />
               {show && <Counter />}
             </main>
           </>

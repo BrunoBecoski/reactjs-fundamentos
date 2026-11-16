@@ -61,8 +61,8 @@
           <header className="flex items-center justify-between bg-(--background) py-4 px-8 rounded-b-2xl mb-20">
             <a
               href="/"
-              className="flex items-center justify-center rounded-full text-xl size-8 cursor-pointer bg-(--primary) text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow)"
               title="Voltar"
+              className="flex items-center justify-center rounded-full text-xl size-8 cursor-pointer bg-(--primary) text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow)"
             >
               {"<"}
             </a>
@@ -100,25 +100,28 @@
         return (
           <>
             <Header />
-            <main className="p-2 flex flex-col items-center">
-              <div>
+            <main className="flex flex-col items-center gap-8 bg-(--background) shadow-(--shadow) rounded-2xl p-14 w-fit mx-auto mb-20">
+              <div className="space-x-4">
                 <input
                   value={search}
                   onChange={(event) => setSearch(event.target.value)}
                   placeholder="Buscar usuários..."
+                  className="rounded-xl p-3 outline-none text-(--text) bg-linear-(--gradient) focus:bg-linear-(--gradient-hover) shadow-(--shadow) bg-(--background)"
                 />
 
                 <button
                   className="rounded-xl p-3 cursor-pointer text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow) bg-(--primary)"
                   onClick={() => setCount(count + 1)}
                 >
-                  re-render: {count}
+                  re-render: <b>{count}</b>
                 </button>
               </div>
 
-              <ul>
+              <ul className="space-y-4 text-center">
                 {filteredUsers.map((user) => (
-                  <li key={user.id}>{user.name}</li>
+                  <li key={user.id}>
+                    <i className="text-xl">{user.name}</i>
+                  </li>
                 ))}
               </ul>
             </main>

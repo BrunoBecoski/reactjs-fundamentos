@@ -61,8 +61,8 @@
           <header className="flex items-center justify-between bg-(--background) py-4 px-8 rounded-b-2xl mb-20">
             <a
               href="/"
-              className="flex items-center justify-center rounded-full text-xl size-8 cursor-pointer bg-(--primary) text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow)"
               title="Voltar"
+              className="flex items-center justify-center rounded-full text-xl size-8 cursor-pointer bg-(--primary) text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow)"
             >
               {"<"}
             </a>
@@ -103,12 +103,14 @@
         return (
           <>
             <Header />
-            <main className="p-3 text-center mt-20">
-              <div className="text-2xl mb-4">🕒 {time}</div>
+            <main className="flex flex-col items-center gap-8 bg-(--background) shadow-(--shadow) rounded-2xl p-14 w-fit mx-auto mb-20">
+              <div className="text-2xl mb-4">
+                🕒 <b> {time}</b>
+              </div>
 
               <button
-                className="rounded-xl p-3 cursor-pointer text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow) bg-(--primary)"
                 onClick={() => setIs12Hours(!is12Hours)}
+                className="rounded-xl p-3 cursor-pointer text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow) bg-(--primary)"
               >
                 Alterar para formato {is12Hours ? "24h" : "12h"}
               </button>

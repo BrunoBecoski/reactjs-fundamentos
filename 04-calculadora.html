@@ -60,8 +60,8 @@
           <header className="flex items-center justify-between bg-(--background) py-4 px-8 rounded-b-2xl mb-20">
             <a
               href="/"
-              className="flex items-center justify-center rounded-full text-xl size-8 cursor-pointer bg-(--primary) text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow)"
               title="Voltar"
+              className="flex items-center justify-center rounded-full text-xl size-8 cursor-pointer bg-(--primary) text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow)"
             >
               {"<"}
             </a>
@@ -225,12 +225,7 @@
           <Text
             as="button"
             variant="heading"
-            className={`
-              flex items-center justify-center rounded-xl
-              p-3 cursor-pointer text-(--text)
-              bg-linear-(--gradient)
-              hover:bg-linear-(--gradient-hover)
-              shadow-(--shadow)
+            className={`flex items-center justify-center rounded-xl p-3 cursor-pointer text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow)
               ${buttonVariants[variant]}
               ${className ? className : ""}
             `}
@@ -334,7 +329,7 @@
         return (
           <>
             <Header />
-            <main className="px-4 sm:px-10 flex flex-col sm:flex-row items-center sm:items-stretch justify-center gap-5">
+            <main className="px-4 sm:px-10 flex flex-col sm:flex-row items-center sm:items-stretch justify-center gap-5 mb-20">
               <CalculatorProvider>
                 <Calculator />
                 <OperationHistory />

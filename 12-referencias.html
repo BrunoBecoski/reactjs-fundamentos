@@ -54,8 +54,8 @@
           <header className="flex items-center justify-between bg-(--background) py-4 px-8 rounded-b-2xl mb-20">
             <a
               href="/"
-              className="flex items-center justify-center rounded-full text-xl size-8 cursor-pointer bg-(--primary) text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow)"
               title="Voltar"
+              className="flex items-center justify-center rounded-full text-xl size-8 cursor-pointer bg-(--primary) text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow)"
             >
               {"<"}
             </a>
@@ -75,13 +75,16 @@
         }
 
         return (
-          <div className="space-x-2">
+          <div className="flex gap-4">
             <input
               ref={ref}
               placeholder="Clique no botão para focar"
-              className="p-2 border"
+              className="rounded-xl p-3 outline-none text-(--text) bg-linear-(--gradient) focus:bg-linear-(--gradient-hover) shadow-(--shadow) bg-(--background)"
             />
-            <button onClick={handleClick} className="p-2 border cursor-pointer">
+            <button
+              onClick={handleClick}
+              className="flex items-center justify-center rounded-xl p-3 cursor-pointer text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow) bg-(--primary)"
+            >
               Focar no Input
             </button>
           </div>
@@ -124,25 +127,45 @@
             <div
               ref={containerRef}
               onScroll={handleContainerScroll}
-              className="border border-blue-950 p-4 h-60 overflow-y-auto "
+              className="p-4 h-60 overflow-y-auto mt-4"
             >
               <div className="space-y-4">
                 {Array.from({ length: 20 }).map((_, index) => (
-                  <p key={index} className="p-2 text-black bg-gray-100 rounded">
-                    Item do conteúdo: {index + 1}
+                  <p
+                    key={index}
+                    className="text-center p-2 bg-(--primary) rounded"
+                  >
+                    <i>
+                      Item do conteúdo:{" "}
+                      <b>{(index + 1).toString().padStart(2, "0")}</b>
+                    </i>
                   </p>
                 ))}
               </div>
             </div>
 
-            <ul className="space-y-2 list-dic pl-5">
-              <li>Progresso do scroll: {scrollPercentage}% </li>
-              <li>Onde está o scroll (scrollTop): {scrollInfo.scrollTop}</li>
+            <ul className="space-y-2">
               <li>
-                Tamanho do scroll (scrollHeight): {scrollInfo.scrollHeight}
+                <i className="text-xl">
+                  Progresso do scroll: <b>{scrollPercentage}%</b>
+                </i>
               </li>
               <li>
-                Tamanho do container (clientHeight): {scrollInfo.clientHeight}
+                <i className="text-xl">
+                  Onde está o scroll (scrollTop): <b>{scrollInfo.scrollTop}</b>
+                </i>
+              </li>
+              <li>
+                <i className="text-xl">
+                  Tamanho do scroll (scrollHeight):{" "}
+                  <b>{scrollInfo.scrollHeight}</b>
+                </i>
+              </li>
+              <li>
+                <i className="text-xl">
+                  Tamanho do container (clientHeight):{" "}
+                  <b>{scrollInfo.clientHeight}</b>
+                </i>
               </li>
             </ul>
           </div>
@@ -153,7 +176,7 @@
         return (
           <>
             <Header />
-            <main className="flex flex-col items-center">
+            <main className="flex flex-col items-center bg-(--background) shadow-(--shadow) rounded-2xl p-14 w-fit mx-auto mb-20">
               <InputFocus />
               <hr />
               <ScrollTracker />

@@ -59,11 +59,7 @@
         return (
           <a
             href={href}
-            className="bg-(--primary)  flex items-center justify-center rounded-xl
-              p-3 cursor-pointer text-(--text)
-              bg-linear-(--gradient)
-              hover:bg-linear-(--gradient-hover)
-              shadow-(--shadow)"
+            className="bg-(--primary)  flex items-center justify-center rounded-xl p-3 cursor-pointer text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow)"
           >
             {children}
           </a>
@@ -72,21 +68,23 @@
 
       function App() {
         return (
-          <main className="flex flex-wrap items-center justify-evenly h-screen max-w-md mx-auto">
-            <Link href="01-hello-world.html">Hello Word</Link>
-            <Link href="02-componentes.html">Componentes</Link>
-            <Link href="03-propriedades.html">Propriedades</Link>
-            <Link href="04-calculadora.html">Calculadora</Link>
-            <Link href="05-eventos.html">Eventos</Link>
-            <Link href="06-estados.html">Estados</Link>
-            <Link href="07-condicionais.html">Condicionais</Link>
-            <Link href="08-listas.html">Listas</Link>
-            <Link href="09-listas-buscas.html">Listas Buscas</Link>
-            <Link href="10-api-contexto.html">Api Contexto</Link>
-            <Link href="11-efeitos.html">Efeitos</Link>
-            <Link href="12-referencias.html">Referências</Link>
-            <Link href="13-memoizacao.html">Memoização</Link>
-            <Link href="14-callback.html">Callback</Link>
+          <main className="h-screen w-screen p-20">
+            <div className="flex flex-wrap items-center justify-center gap-24 w-full h-full border">
+              <Link href="01-hello-world.html">Hello Word</Link>
+              <Link href="02-componentes.html">Componentes</Link>
+              <Link href="03-propriedades.html">Propriedades</Link>
+              <Link href="04-calculadora.html">Calculadora</Link>
+              <Link href="05-eventos.html">Eventos</Link>
+              <Link href="06-estados.html">Estados</Link>
+              <Link href="07-condicionais.html">Condicionais</Link>
+              <Link href="08-listas.html">Listas</Link>
+              <Link href="09-listas-buscas.html">Listas Buscas</Link>
+              <Link href="10-api-contexto.html">Api Contexto</Link>
+              <Link href="11-efeitos.html">Efeitos</Link>
+              <Link href="12-referencias.html">Referências</Link>
+              <Link href="13-memoizacao.html">Memoização</Link>
+              <Link href="14-callback.html">Callback</Link>
+            </div>
           </main>
         );
       }

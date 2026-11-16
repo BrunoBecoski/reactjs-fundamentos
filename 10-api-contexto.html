@@ -61,8 +61,8 @@
           <header className="flex items-center justify-between bg-(--background) py-4 px-8 rounded-b-2xl mb-20">
             <a
               href="/"
-              className="flex items-center justify-center rounded-full text-xl size-8 cursor-pointer bg-(--primary) text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow)"
               title="Voltar"
+              className="flex items-center justify-center rounded-full text-xl size-8 cursor-pointer bg-(--primary) text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow)"
             >
               {"<"}
             </a>
@@ -95,41 +95,32 @@
         const { savedCounts, saveCount } = React.useContext(CounterContext);
 
         return (
-          <>
-            <p>
-              Contador: <b>{counter}</b> - Último valor salvo{" "}
+          <div className="flex flex-col items-center gap-8">
+            <p className="text-xl">
+              Contador: <b>{counter}</b>
+            </p>
+            <p className="text-xl">
+              Último valor salvo:{" "}
               <b>{savedCounts[savedCounts.length - 1] || ""}</b>
             </p>
             <button
               type="button"
               onClick={() => setCounter(10)}
-              className="flex items-center justify-center rounded-xl
-              p-3 cursor-pointer text-(--text)
-              bg-linear-(--gradient)
-              hover:bg-linear-(--gradient-hover)
-              shadow-(--shadow) bg-(--primary)"
+              className="flex items-center justify-center rounded-xl p-3 cursor-pointer text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow) bg-(--primary)"
             >
               Atualizar
             </button>
             <button
               type="button"
               onClick={() => setCounter((prevValue) => prevValue + 1)}
-              className="flex items-center justify-center rounded-xl
-              p-3 cursor-pointer text-(--text)
-              bg-linear-(--gradient)
-              hover:bg-linear-(--gradient-hover)
-              shadow-(--shadow) bg-(--primary)"
+              className="flex items-center justify-center rounded-xl p-3 cursor-pointer text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow) bg-(--primary)"
             >
               Incrementar
             </button>
             <button
               type="button"
               onClick={() => setCounter((prevValue) => prevValue - 1)}
-              className="flex items-center justify-center rounded-xl
-              p-3 cursor-pointer text-(--text)
-              bg-linear-(--gradient)
-              hover:bg-linear-(--gradient-hover)
-              shadow-(--shadow) bg-(--primary)"
+              className="flex items-center justify-center rounded-xl p-3 cursor-pointer text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow) bg-(--primary)"
             >
               Decrementar
             </button>
@@ -137,15 +128,11 @@
             <button
               type="button"
               onClick={() => saveCount(counter)}
-              className="flex items-center justify-center rounded-xl
-              p-3 cursor-pointer text-(--text)
-              bg-linear-(--gradient)
-              hover:bg-linear-(--gradient-hover)
-              shadow-(--shadow) bg-(--primary)"
+              className="flex items-center justify-center rounded-xl p-3 cursor-pointer text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow) bg-(--primary)"
             >
               Salvar
             </button>
-          </>
+          </div>
         );
       }
 
@@ -154,10 +141,12 @@
 
         return (
           <div>
-            <h2>Valores salvos</h2>
-            <ul>
+            <h2 className="text-xl mb-4">Valores salvos</h2>
+            <ul className="space-y-4 text-center">
               {savedCounts.map((count, index) => (
-                <li key={`count-${index}`}>{count}</li>
+                <li key={`count-${index}`}>
+                  <i className="text-xl">{count}</i>
+                </li>
               ))}
             </ul>
           </div>
@@ -168,10 +157,9 @@
         return (
           <>
             <Header />
-            <main className="flex flex-col items-center">
+            <main className="flex flex-row gap-16 bg-(--background) shadow-(--shadow) rounded-2xl p-14 w-fit mx-auto mb-20">
               <CounterProvider>
                 <Counter />
-                <hr />
                 <CounterList />
               </CounterProvider>
             </main>

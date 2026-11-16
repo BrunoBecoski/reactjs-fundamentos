@@ -61,8 +61,8 @@
           <header className="flex items-center justify-between bg-(--background) py-4 px-8 rounded-b-2xl mb-20">
             <a
               href="/"
-              className="flex items-center justify-center rounded-full text-xl size-8 cursor-pointer bg-(--primary) text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow)"
               title="Voltar"
+              className="flex items-center justify-center rounded-full text-xl size-8 cursor-pointer bg-(--primary) text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow)"
             >
               {"<"}
             </a>
@@ -83,44 +83,34 @@
 
         return (
           <>
-            <p>
+            <p className="text-xl">
               Contador: <b>{counter}</b>
             </p>
 
-            <p>{counter > 10 ? "Maior que 10" : "Menor ou igual a 10"}</p>
+            <p className="text-xl">
+              {counter > 10 ? "Maior que 10" : "Menor ou igual a 10"}
+            </p>
 
             {counter > 15 && <p>Maior que 15</p>}
 
             <button
               type="button"
               onClick={() => setCounter(10)}
-              className="flex items-center justify-center rounded-xl
-              p-3 cursor-pointer text-(--text)
-              bg-linear-(--gradient)
-              hover:bg-linear-(--gradient-hover)
-              shadow-(--shadow) bg-(--primary)"
+              className="flex items-center justify-center rounded-xl p-3 cursor-pointer text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow) bg-(--primary)"
             >
               Atualizar
             </button>
             <button
               type="button"
               onClick={() => setCounter((prevValue) => prevValue + 1)}
-              className="flex items-center justify-center rounded-xl
-              p-3 cursor-pointer text-(--text)
-              bg-linear-(--gradient)
-              hover:bg-linear-(--gradient-hover)
-              shadow-(--shadow) bg-(--primary)"
+              className="flex items-center justify-center rounded-xl p-3 cursor-pointer text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow) bg-(--primary)"
             >
               Incrementar
             </button>
             <button
               type="button"
               onClick={() => setCounter((prevValue) => prevValue - 1)}
-              className="flex items-center justify-center rounded-xl
-              p-3 cursor-pointer text-(--text)
-              bg-linear-(--gradient)
-              hover:bg-linear-(--gradient-hover)
-              shadow-(--shadow) bg-(--primary)"
+              className="flex items-center justify-center rounded-xl p-3 cursor-pointer text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow) bg-(--primary)"
             >
               Decrementar
             </button>
@@ -132,7 +122,7 @@
         return (
           <>
             <Header />
-            <main className="flex flex-col items-center">
+            <main className="flex flex-col items-center gap-8 bg-(--background) shadow-(--shadow) rounded-2xl p-14 w-fit mx-auto mb-20">
               <Counter />
             </main>
           </>

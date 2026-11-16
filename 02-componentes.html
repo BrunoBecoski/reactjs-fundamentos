@@ -61,8 +61,8 @@
           <header className="flex items-center justify-between bg-(--background) py-4 px-8 rounded-b-2xl mb-20">
             <a
               href="/"
-              className="flex items-center justify-center rounded-full text-xl size-8 cursor-pointer bg-(--primary) text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow)"
               title="Voltar"
+              className="flex items-center justify-center rounded-full text-xl size-8 cursor-pointer bg-(--primary) text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow)"
             >
               {"<"}
             </a>
@@ -76,13 +76,7 @@
 
       function Button() {
         return (
-          <button
-            className="flex items-center justify-center rounded-xl
-          p-3 cursor-pointer text-(--text)
-          bg-linear-(--gradient)
-          hover:bg-linear-(--gradient-hover)
-          shadow-(--shadow) bg-(--primary)"
-          >
+          <button className="flex items-center justify-center rounded-xl p-3 cursor-pointer bg-(--primary) text-(--text) bg-linear-(--gradient) hover:bg-linear-(--gradient-hover) shadow-(--shadow)">
             Botão
           </button>
         );
@@ -92,11 +86,9 @@
         return (
           <>
             <Header />
-            <main className="flex items-center justify-center">
-              <div className="flex items-center justify-center gap-2">
-                <Button />
-                <Button />
-              </div>
+            <main className="flex items-center justify-center gap-8 bg-(--background) shadow-(--shadow) rounded-2xl p-14 w-fit mx-auto mb-20">
+              <Button />
+              <Button />
             </main>
           </>
         );
